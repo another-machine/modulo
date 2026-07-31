@@ -1,6 +1,6 @@
 import { Machine } from "../Machine";
 import { ROOTS, MODES } from "../Notes";
-import { RendererThemeLCH } from "../Renderer";
+import { RendererThemeLCH, RendererThemeSizesPads } from "../Renderer";
 import {
   Destination,
   DestinationCommand,
@@ -12,7 +12,7 @@ import { themeSelectorProperty } from "./synthUtilities";
 
 function propertyGeneratorLayoutRange(machine: Machine, type: "pads") {
   return function (
-    key: string,
+    key: keyof RendererThemeSizesPads,
     min = 0,
     max = 1,
     step = 0.01

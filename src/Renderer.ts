@@ -72,7 +72,8 @@ export class Renderer {
   elementKeys = document.createElement("div");
   elementPads = document.createElement("div");
   style = document.createElement("style");
-  theme: RendererTheme;
+  // Assigned by setTheme(), which the constructor always calls.
+  theme!: RendererTheme;
   core: MachineCore;
   rendererEventHandler: RendererEventHandler;
 
@@ -265,14 +266,14 @@ export class Renderer {
     const rules: string[] = [];
     theme.colors.forEach((color, i) => {
       for (let item in color) {
-        setColor([i.toString(), item], theme.colors[i][item]);
+        setColor([i.toString(), item], color[item as keyof RendererThemeColor]);
       }
       rules.push(this.themeRule(`theme-key-${i}`, `${i}`));
     });
     this.style.textContent = rules.join("\n");
 
     for (let type in theme.sizes) {
-      const object = theme.sizes[type];
+      const object = theme.sizes[type as keyof RendererTheme["sizes"]];
       for (let key in object) {
         const token = key
           .replace(/([^a-z])/g, "-$1")
@@ -280,7 +281,10 @@ export class Renderer {
           .filter(Boolean)
           .join("-")
           .toLowerCase();
-        setProperty(`--${type}-${token}-factor`, object[key]);
+        setProperty(
+          `--${type}-${token}-factor`,
+          object[key as keyof RendererThemeSizesPads]
+        );
       }
     }
   }

@@ -6,9 +6,10 @@ import { generateKeyboardDestinations } from "./generateKeyboardDestinations";
 import { Destination } from "./Destination";
 
 export class Destinations {
-  root: Destination;
+  // Assigned by refresh(), which the constructor always calls.
+  root!: Destination;
   machine: Machine;
-  onExport: () => void;
+  onExport: (type: "image" | "json" | "url") => void;
   onToggleMachine: () => boolean;
   onToggleRainbow: () => boolean;
   onStepChange: () => void;
@@ -25,7 +26,7 @@ export class Destinations {
     onPropertyChange,
   }: {
     machine: Machine;
-    onExport: () => void;
+    onExport: (type: "image" | "json" | "url") => void;
     onToggleMachine: () => boolean;
     onToggleRainbow: () => boolean;
     onStepChange: () => void;
