@@ -1,0 +1,25 @@
+{
+  // Parcel transpiles without type-checking, so nothing here has ever been
+  // type-checked. `npm run typecheck` exists to change that, but it is
+  // deliberately NOT wired into `build` or the deploy yet: it currently reports
+  // 6 pre-existing errors in this repo's own code (uninitialised class
+  // properties, and string-indexing the renderer theme types). None of them
+  // come from the @amplib packages. Fix them, then gate the build on it.
+  //
+  // moduleResolution "bundler" matches how this is actually consumed — Parcel —
+  // and matches the @amplib packages, which are ESM with a "types" entry.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "modulo",
+  "version": "1.0.0",
+  "description": "A skinnable step sequencer with a command prompt.",
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/another-machine/modulo.git"
+  },
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build --no-cache",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@amplib/devices": "^0.1.0",
+    "@amplib/music-theory": "^0.1.0",
+    "@amplib/steganography": "^0.1.0",
+    "tone": "^15.0.4"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "typescript": "^5.5.4"
+  }
+}
