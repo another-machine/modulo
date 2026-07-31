@@ -48,7 +48,12 @@ jobs:
       # reviewable in the diff.
       - run: echo "modulo.amplib.app" > dist/CNAME
 
+      # enablement: true so a fresh clone of this repo deploys without anyone
+      # first clicking through Settings → Pages. Without it the very first run
+      # fails with "Get Pages site failed" and nothing explains why.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: "./dist"
