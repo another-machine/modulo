@@ -43,9 +43,12 @@ jobs:
       # repo's workflow. It has its own subdomain now, so it builds at the root
       # and needs no --public-url. amplib.app/modulo forwards here.
       #
-      # The CNAME travels in the artifact rather than living only in repo
-      # settings, so the custom domain survives a settings reset and is
-      # reviewable in the diff.
+      # This CNAME does NOT set the custom domain. That is a repo setting, and
+      # for an Actions-based deploy GitHub ignores the file in the artifact —
+      # the first deploy here succeeded with this step in place and still left
+      # the domain unset, until it was set through the API. The file is kept
+      # only so the domain is visible in the diff and survives a branch-based
+      # fallback. To change the domain you must also change the repo setting.
       - run: echo "modulo.amplib.app" > dist/CNAME
 
       # enablement: true so a fresh clone of this repo deploys without anyone
