@@ -17,7 +17,7 @@
   "dependencies": {
     "@amplib/devices": "^0.2.0",
     "@amplib/music-theory": "^0.1.0",
-    "@amplib/steganography": "^0.1.0",
+    "@amplib/steganography": "^1.0.0",
     "tone": "^15.0.4"
   },
   "devDependencies": {
